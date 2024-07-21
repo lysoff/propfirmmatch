@@ -22,6 +22,10 @@ interface Trade {
   tp: number;
 }
 
+interface OpenPositionResponse {
+  open_trades: Trade[];
+}
+
 async function getPositions() {
   const res = await fetch("http://13.41.72.245/open_positions");
 
@@ -31,7 +35,7 @@ async function getPositions() {
 
   const result = await res.json();
 
-  return result as { open_trades: Trade[] };
+  return result as OpenPositionResponse;
 }
 
 const Positions = async () => {
