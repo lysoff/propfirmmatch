@@ -1,5 +1,5 @@
 import Image from "next/image";
-import minusSvg from "@/public/minus-outline (1).svg";
+import minusSvg from "@/public/minus-outline.svg";
 
 const CloseButton = () => {
   return (

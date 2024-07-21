@@ -1,42 +1,7 @@
+import { getPositions } from "@/api";
 import CloseButton from "@/components/CloseButton";
 import Separator from "@/components/Separator";
 import { Suspense } from "react";
-
-interface Trade {
-  account_id: number;
-  balance: number;
-  entry: number;
-  equity: number;
-  exit: number;
-  exit_time: string;
-  fees: number;
-  open_time: string;
-  order_id: string;
-  pl: number;
-  position_type: "long" | "short";
-  quantity: number;
-  roi: number;
-  sl: number;
-  status: "loss" | "profit";
-  symbol: "EURUSD";
-  tp: number;
-}
-
-interface OpenPositionResponse {
-  open_trades: Trade[];
-}
-
-async function getPositions() {
-  const res = await fetch("http://13.41.72.245/open_positions");
-
-  if (!res.ok) {
-    throw new Error("Failed to fetch data");
-  }
-
-  const result = await res.json();
-
-  return result as OpenPositionResponse;
-}
 
 const Positions = async () => {
   const { open_trades } = await getPositions();

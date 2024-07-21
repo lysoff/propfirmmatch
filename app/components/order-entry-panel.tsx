@@ -4,70 +4,7 @@ import calendarSvg from "@/public/calendar-month.svg";
 import Image from "next/image";
 import Separator from "@/components/Separator";
 import PriceInput from "@/components/PriceInput";
-
-type Instrument =
-  | "AUDUSD"
-  | "EURCHF"
-  | "EURJPY"
-  | "EURUSD"
-  | "GBPUSD"
-  | "NZDUSD"
-  | "USDCAD";
-
-interface CurrentPricesResponse {
-  prices: Record<Instrument, number>[];
-  status: "success" | "error";
-}
-
-interface AccountDetailsResponse {
-  account_id: number;
-  account_name: string;
-  auto_be_level: number;
-  balance: string;
-  commissions: {
-    asset_class: "Crypto" | "Forex";
-    price_per_lot: number;
-  }[];
-  daily_loss_limit: number;
-  equity: number;
-  exchange: "Binance" | "Other";
-  leverage: number;
-  max_lot_sizes: number[];
-  one_click: boolean;
-  risk: number;
-  show_leaderboard: boolean;
-  starting_balance: number;
-  status: "success" | "error";
-  symbol_mappings: {
-    mapping: string;
-    symbol: Instrument;
-  };
-  take_profit_level: number;
-}
-
-async function fetchAccountDetails() {
-  const res = await fetch("http://13.41.72.245/account_details");
-
-  if (!res.ok) {
-    throw new Error("Failed to fetch data");
-  }
-
-  const result = await res.json();
-
-  return result as AccountDetailsResponse;
-}
-
-async function fetchCurrentPrices() {
-  const res = await fetch("http://13.41.72.245/current_prices");
-
-  if (!res.ok) {
-    throw new Error("Failed to fetch data");
-  }
-
-  const result = await res.json();
-
-  return result as CurrentPricesResponse;
-}
+import { fetchAccountDetails, fetchCurrentPrices } from "@/api";
 
 const OrderEntryPanel = async () => {
   const {

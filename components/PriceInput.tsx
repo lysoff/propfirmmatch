@@ -1,6 +1,6 @@
 import Image from "next/image";
 import plusSvg from "@/public/plus-outline.svg";
-import minusSvg from "@/public/minus-outline (1).svg";
+import minusSvg from "@/public/minus-outline.svg";
 
 interface PriceInputProps {
   value: number;
