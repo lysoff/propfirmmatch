@@ -34,7 +34,7 @@ export interface AccountDetailsResponse {
   symbol_mappings: {
     mapping: string;
     symbol: Instrument;
-  };
+  }[];
   take_profit_level: number;
 }
 
