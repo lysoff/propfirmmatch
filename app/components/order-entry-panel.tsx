@@ -5,6 +5,7 @@ import Image from "next/image";
 import Separator from "@/components/Separator";
 import PriceInput from "@/components/PriceInput";
 import { fetchAccountDetails, fetchCurrentPrices } from "@/api";
+import InstrumentPicker from "./instrument-picker";
 
 const OrderEntryPanel = async () => {
   const {
@@ -16,9 +17,7 @@ const OrderEntryPanel = async () => {
   return (
     <div>
       <section>
-        <select>
-          <option>EURUSD ${prices.EURUSD}</option>
-        </select>
+        <InstrumentPicker />
         <form>
           <div>
             <ul>
