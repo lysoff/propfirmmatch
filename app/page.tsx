@@ -6,10 +6,10 @@ import Positions from "./components/positions";
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center p-24 gap-6">
-      <Header />
-      {/* <Account />
-      <OrderEntryPanel /> */}
-      <Positions />
+      {/* <Header /> */}
+      {/* <Account /> */}
+      <OrderEntryPanel />
+      {/* <Positions /> */}
     </main>
   );
 }
